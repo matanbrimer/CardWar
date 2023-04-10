@@ -149,9 +149,14 @@ void Game::playTurn(){
 }  
 
 void Game:: playAll(){
-    while(player1.deckPlayNOTempty() && player2.deckPlayNOTempty()){
-        playTurn();
-    }    
+    try {
+        while(player1.deckPlayNOTempty() && player2.deckPlayNOTempty()){
+            playTurn();
+        }
+    }
+    catch(const char* error) {
+        std::cerr << "Error: " << error << std::endl;
+    }   
 }
 
 void Game::printWiner(){
